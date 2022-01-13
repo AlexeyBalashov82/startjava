@@ -1,24 +1,26 @@
 public class Cycle {
 
     public static void main(String[] args) {
-        for (int i = 0; i<=20; i++) {
+        for (int i = 0; i <=20; i++) {
             System.out.print(i + " ");
         }
         System.out.print("\n");
-        int numberForWhileCycle = 6;
-        while (numberForWhileCycle>=-6) {
-            System.out.print(numberForWhileCycle + " ");
-            numberForWhileCycle = numberForWhileCycle-2;
+
+        int counter = 6;
+        while (counter >=-6) {
+            System.out.print(counter + " ");
+            counter -= 2;
         }
         System.out.print("\n");
-        int sum = 0;
-        int numberForDoWhileCycle = 10;
+
+        int sumOdd = 0;
+        counter = 10;
         do {
-            if (numberForDoWhileCycle % 2 != 0){
-                sum += numberForDoWhileCycle;
+            if (counter % 2 != 0){
+                sumOdd += counter;
             }
-            numberForDoWhileCycle++;
-        } while(numberForDoWhileCycle<=20);
-        System.out.println(sum);
+            counter++;
+        } while(counter<=20);
+        System.out.println(sumOdd);
     }
 }
