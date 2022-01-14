@@ -1,13 +1,13 @@
 public class Cycle {
 
     public static void main(String[] args) {
-        for (int i = 0; i <=20; i++) {
+        for (int i = 0; i <= 20; i++) {
             System.out.print(i + " ");
         }
         System.out.print("\n");
 
         int counter = 6;
-        while (counter >=-6) {
+        while (counter >= -6) {
             System.out.print(counter + " ");
             counter -= 2;
         }
@@ -20,7 +20,7 @@ public class Cycle {
                 sumOdd += counter;
             }
             counter++;
-        } while(counter<=20);
+        } while(counter <= 20);
         System.out.println(sumOdd);
     }
 }

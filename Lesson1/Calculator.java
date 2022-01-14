@@ -11,15 +11,15 @@ public class Calculator {
             System.out.println(firstNumber-secondNumber);
         } else if (action == '*') {
             System.out.println(firstNumber*secondNumber);            
-        } else if (action =='/') {
+        } else if (action == '/') {
             System.out.println(firstNumber/(double)secondNumber);            
         } else if (action == '^') {
            long power = 1;
-           for (int i = 1; i<=secondNumber; i++){
+           for (int i = 1; i <= secondNumber; i++){
              power *= firstNumber;
            } 
             System.out.println(power);
-        } else if (action =='%') {
+        } else if (action == '%') {
             System.out.println(firstNumber%secondNumber);            
         }
     }

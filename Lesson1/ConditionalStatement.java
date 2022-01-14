@@ -1,12 +1,12 @@
 public class ConditionalStatement {
 
-    private static int age = 39;
-    private static boolean isMale = true;
-    private static float growth = 1.76F;
-    private static char firstLetteOfTheName = 'A';
-
     public static void main(String[] args) {
-        if (age>20) {
+        int age = 39;
+        boolean isMale = true;
+        float growth = 1.76F;
+        char firstLetteOfName = 'A';
+
+        if (age > 20) {
             System.out.println("I'm older then 20");
         }
 
@@ -18,15 +18,15 @@ public class ConditionalStatement {
             System.out.println("I'm a woman");
         }
 
-        if (growth<1.80) {
+        if (growth < 1.80) {
             System.out.println("I'm below 1.80");
         } else {
             System.out.println("I'm 1.80 at last");
         }
 
-        if (firstLetteOfTheName == 'M') {
+        if (firstLetteOfName == 'M') {
             System.out.println("My name starts with M");
-        } else if (firstLetteOfTheName == 'I') {
+        } else if (firstLetteOfName == 'I') {
             System.out.println("My name starts with I");
         } else {
             System.out.println("My name starts not from M neither from I");
