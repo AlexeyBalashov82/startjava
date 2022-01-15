@@ -3,19 +3,19 @@ public class MyFirstGame {
     public static void main(String[] args) {
         int secretNumber = 49;
         int userNumber = 50;
-        int lowBorder = 0;
-        int highBorder = 101;
+        int lowRangeLimit = 1;
+        int highRangeLimit = 100;
 
-        while (userNumber != secretNumber){
-            if (secretNumber < userNumber){
+        while (userNumber != secretNumber) {
+            if (secretNumber <= userNumber) {
                 System.out.println("My number is less than: " + userNumber);
-                highBorder = userNumber;
-                userNumber -= (highBorder - lowBorder)/2;
+                highRangeLimit = userNumber;
+                userNumber -= (highRangeLimit - lowRangeLimit) / 2;
             }
-            if (secretNumber > userNumber){
+            if (secretNumber >= userNumber) {
                 System.out.println("My number is bigger than: " + userNumber);
-                lowBorder = userNumber;
-                userNumber += (highBorder - lowBorder)/2;               
+                lowRangeLimit = userNumber;
+                userNumber += (highRangeLimit - lowRangeLimit) / 2;               
             }           
         }
         System.out.println("Your win! Secret number is: " + userNumber);

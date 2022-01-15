@@ -16,7 +16,7 @@ public class Cycle {
         int sumOdd = 0;
         counter = 10;
         do {
-            if (counter % 2 != 0){
+            if (counter % 2 != 0) {
                 sumOdd += counter;
             }
             counter++;
