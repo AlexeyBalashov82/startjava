@@ -18,7 +18,7 @@ public class Calculator {
         } else if (mathOperation == '^') {
            long power = 1;
            for (int i = 1; i <= secondNumber; i++) {
-             power *= firstNumber;
+               power *= firstNumber;
            } 
             System.out.println(power);
         } else if (mathOperation == '%') {
