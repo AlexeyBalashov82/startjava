@@ -12,7 +12,7 @@ public class Calculator {
         } else if (mathOperation == '*') {
             System.out.println(firstNumber * secondNumber);            
         } else if (mathOperation == '/') {
-            System.out.println(firstNumber / (double)secondNumber);            
+            System.out.println(firstNumber / (double) secondNumber);            
         } else if (mathOperation == '^') {
            long power = 1;
            for (int i = 1; i <= secondNumber; i++) {
