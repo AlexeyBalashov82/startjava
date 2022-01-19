@@ -1,8 +1,6 @@
 public class Calculator {
 
-
     public static void main(String[] args) {
-
         int firstNumber = 26;
         int secondNumber = 10;
         char mathOperation = '/';

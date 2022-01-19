@@ -1,7 +1,6 @@
 public class ConditionalStatement {
 
     public static void main(String[] args) {
-
         int age = 39;
         if (age > 20) {
             System.out.println("I'm older then 20");
