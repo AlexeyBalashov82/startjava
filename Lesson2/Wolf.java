@@ -1,10 +1,10 @@
-public class Wolf extends Object {
+public class Wolf {
 
-    public boolean isMale;
-    public String name;
-    public int weight;
-    public int age;
-    public String color;
+    boolean isMale;
+    String name;
+    int weight;
+    int age;
+    String color;
 
     public Wolf(boolean isMale, String name, int weight, int age, String color) {
         this.isMale = isMale;
@@ -14,23 +14,23 @@ public class Wolf extends Object {
         this.color = color;
     }
 
-    public void sit() {
+    void sit() {
         System.out.println("Sitting");
     }
 
-    public void walk() {
+    void walk() {
         System.out.println("Walking");
     }
 
-    public void run() {
+    void run() {
         System.out.println("Running");
     }
 
-    public void howl() {
+    void howl() {
         System.out.println("Woooooo...");
     }
 
-    public void hunt() {
+    void hunt() {
         System.out.println("Om-nom-nom");
     }
 }
