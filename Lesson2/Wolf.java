@@ -1,17 +1,17 @@
 public class Wolf {
 
-    private boolean sex; // true - male, false - female
+    private boolean male; 
     private String name;
     private int weight;
     private int age;
     private String color;
 
     public boolean isMale() {
-        return sex;
+        return male;
     }
 
-    public void setSex(boolean sex) {
-        this.sex = sex;
+    public void setMale(boolean male) {
+        this.male = male;
     }
 
     public String getName() {
