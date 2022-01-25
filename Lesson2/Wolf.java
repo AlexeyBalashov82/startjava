@@ -6,14 +6,6 @@ public class Wolf {
     int age;
     String color;
 
-    public Wolf(boolean isMale, String name, int weight, int age, String color) {
-        this.isMale = isMale;
-        this.name = name;
-        this.weight = weight;
-        this.age = age;
-        this.color = color;
-    }
-
     void sit() {
         System.out.println("Sitting");
     }
