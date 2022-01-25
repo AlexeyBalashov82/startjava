@@ -35,7 +35,7 @@ public class Wolf {
     }
 
     public void setAge(int age) {
-        if (age>8){
+        if (age > 8){
             System.out.println("This wolf is seemed to be dead");
         } else {
             this.age = age;
