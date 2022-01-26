@@ -32,7 +32,6 @@ public class CalculatorTest {
             System.out.print(ENTERSECONDNUMBER);
             secondNumber = Integer.parseInt(console.nextLine());
             calc.setSecondNumber(secondNumber);
-
             System.out.println(firstNumber+mathOperation+secondNumber+" = "+ calc.calculate(mathOperation));
         } while (isRepeatable(console));
 
