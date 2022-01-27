@@ -3,28 +3,20 @@ public class Calculator {
     private int firstNumber;
     private int secondNumber;
 
-    public void setFirstNumber (int firstNumber) {
+    public void setFirstNumber(int firstNumber) {
         this.firstNumber = firstNumber;
     }
 
-    public void setSecondNumber (int secondNumber) {
+    public void setSecondNumber(int secondNumber) {
         this.secondNumber = secondNumber;
     }
 
-    private int add() {
-        return firstNumber + secondNumber;
-    }
-
-    private int subtract() {
-        return firstNumber - secondNumber;
-    } 
-
-    private int multiply() {
-        return firstNumber * secondNumber;
-    }
-
-    private double divide() {
-        return firstNumber / (double) secondNumber;
+    public boolean isValidOperation(String mathOperation) {
+        String validString = "+-*/^%";
+        if (!validString.contains(mathOperation)){
+            System.out.println("Unknown operation!");
+        }
+        return validString.contains(mathOperation);
     }
 
     private long pow() {
@@ -35,26 +27,22 @@ public class Calculator {
         return power;
     }
 
-    private int reminder() {
-        return firstNumber % secondNumber;
-    }
-
-    public String calculate(String mathOperation) {
-        String result;
+    public double calculate(String mathOperation) {
+        double result;
         switch (mathOperation) {
-        case "+": result = String.valueOf(add());
+        case "+": result = firstNumber + secondNumber;
             break;
-        case "-": result = String.valueOf(subtract());
+        case "-": result = firstNumber - secondNumber;
             break;
-        case "*": result = String.valueOf(multiply());
+        case "*": result = firstNumber * secondNumber;
             break;
-        case "/": result = String.valueOf(divide());
+        case "/": result = firstNumber / (double) secondNumber;
             break;
-        case "^": result = String.valueOf(pow());
+        case "^": result = pow();
             break;
-        case "%": result = String.valueOf(reminder());
+        case "%": result = firstNumber % secondNumber;
             break;
-        default: result = "Unknown operation!";
+        default: result = 0;
             break;
         }
        return result; 
