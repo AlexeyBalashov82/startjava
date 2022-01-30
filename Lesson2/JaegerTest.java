@@ -2,7 +2,6 @@ public class JaegerTest {
 
     public static void main(String[] args) {
         Jaeger atlasDestroyer = new Jaeger();
-        Jaeger matadorFury = new Jaeger();
         String commonMark = "Mark-3";
 
         atlasDestroyer.setModelName("Atlas Destroyer");
@@ -14,6 +13,8 @@ public class JaegerTest {
         atlasDestroyer.setArmor(2);
         atlasDestroyer.move();
         System.out.println(atlasDestroyer.getStrength());
+
+        Jaeger matadorFury = new Jaeger();
 
         matadorFury.setModelName("Matador Fury");
         matadorFury.setMark(commonMark);

@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class CalculatorTest {
 
     public static void main(String[] args) {
-
         Calculator calc = new Calculator();
         Scanner console = new Scanner(System.in);
         int firstNumber;
@@ -12,17 +11,18 @@ public class CalculatorTest {
 
         do {
             System.out.print("Enter first number: ");
-            firstNumber = Integer.parseInt(console.nextLine());
+            firstNumber = console.nextInt();
+            console.nextLine();
             calc.setFirstNumber(firstNumber);
-            mathOperation = "";
             do {
                 System.out.print("Enter math operation: ");
                 mathOperation = console.nextLine();  
-            } while (!calc.isValidOperation(mathOperation));
+            } while (!calc.setMathOperation(mathOperation));
             System.out.print("Enter second number: ");
-            secondNumber = Integer.parseInt(console.nextLine());
+            secondNumber = console.nextInt();
+            console.nextLine();
             calc.setSecondNumber(secondNumber);
-            System.out.println(firstNumber + mathOperation + secondNumber + " = " + calc.calculate(mathOperation));
+            System.out.println(firstNumber + mathOperation + secondNumber + " = " + calc.calculate());
         } while (isNext(console));
     }
 

@@ -2,6 +2,7 @@ public class Calculator {
 
     private int firstNumber;
     private int secondNumber;
+    private String mathOperation;
 
     public void setFirstNumber(int firstNumber) {
         this.firstNumber = firstNumber;
@@ -11,12 +12,28 @@ public class Calculator {
         this.secondNumber = secondNumber;
     }
 
-    public boolean isValidOperation(String mathOperation) {
+    public boolean setMathOperation(String mathOperation) {
         String validString = "+-*/^%";
-        if (!validString.contains(mathOperation)){
+        boolean isValidOperation = validString.contains(mathOperation);
+        if (!isValidOperation) {
             System.out.println("Unknown operation!");
         }
-        return validString.contains(mathOperation);
+        else {
+            this.mathOperation = mathOperation;
+        }
+        return isValidOperation;
+    }
+
+    public double calculate() {
+        switch (mathOperation) {
+            case "+": return firstNumber + secondNumber;
+            case "-": return firstNumber - secondNumber;
+            case "*": return firstNumber * secondNumber;
+            case "/": return firstNumber / (double) secondNumber;
+            case "^": return pow();
+            case "%": return firstNumber % secondNumber;
+            default: return 0;
+        }
     }
 
     private long pow() {
@@ -25,26 +42,5 @@ public class Calculator {
              power *= firstNumber;
         }   
         return power;
-    }
-
-    public double calculate(String mathOperation) {
-        double result;
-        switch (mathOperation) {
-        case "+": result = firstNumber + secondNumber;
-            break;
-        case "-": result = firstNumber - secondNumber;
-            break;
-        case "*": result = firstNumber * secondNumber;
-            break;
-        case "/": result = firstNumber / (double) secondNumber;
-            break;
-        case "^": result = pow();
-            break;
-        case "%": result = firstNumber % secondNumber;
-            break;
-        default: result = 0;
-            break;
-        }
-       return result; 
-    }
+    }    
 }
