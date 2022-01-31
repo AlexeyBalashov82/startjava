@@ -8,6 +8,7 @@ public class CalculatorTest {
         int firstNumber;
         int secondNumber;
         String mathOperation; 
+        boolean isValidOperation;
 
         do {
             System.out.print("Enter first number: ");
@@ -17,7 +18,11 @@ public class CalculatorTest {
             do {
                 System.out.print("Enter math operation: ");
                 mathOperation = console.nextLine();  
-            } while (!calc.setMathOperation(mathOperation));
+                isValidOperation = calc.setMathOperation(mathOperation);
+                if (!isValidOperation){
+                    System.out.println("Unknown operation!");
+                }
+            } while (!isValidOperation);
             System.out.print("Enter second number: ");
             secondNumber = console.nextInt();
             console.nextLine();

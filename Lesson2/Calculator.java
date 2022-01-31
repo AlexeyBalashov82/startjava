@@ -14,14 +14,8 @@ public class Calculator {
 
     public boolean setMathOperation(String mathOperation) {
         String validString = "+-*/^%";
-        boolean isValidOperation = validString.contains(mathOperation);
-        if (!isValidOperation) {
-            System.out.println("Unknown operation!");
-        }
-        else {
-            this.mathOperation = mathOperation;
-        }
-        return isValidOperation;
+        this.mathOperation = mathOperation;
+        return validString.contains(mathOperation);
     }
 
     public double calculate() {
