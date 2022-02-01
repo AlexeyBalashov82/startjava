@@ -4,31 +4,29 @@ import java.util.Scanner;
 public class GuessNumber {
 
     private int secretNumber;
+    private Player player1;
+    private Player player2;
 
-    public void play(Player player1, Player player2, Scanner console){
-        boolean isfirstPlayerTurn;
-        boolean isSecretNumberGuessed;
-        byte sign;
+    public GuessNumber(Player player1, Player player2){
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    public void play(){
+        Scanner console = new Scanner(System.in);
+        Player currentPlayer = player1;
 
         generateNumber();
-        isfirstPlayerTurn = true;
-        isSecretNumberGuessed = false;
-        while (!isSecretNumberGuessed){
-            if (isfirstPlayerTurn) {
-                sign = playerNextStep(player1, console);
+        player1.setNumber(-1);//сбрасываю значения, на случай если новый секрет совпадет с последним числом текущего игрока
+        player2.setNumber(-1);
+
+        while (currentPlayer.getNumber() != secretNumber){
+            if (tryGuessNumberCurrentPlayer(currentPlayer, console)) {
+                System.out.println(currentPlayer.getName() + " wins!");
             } else {
-                sign = playerNextStep(player2, console);
+                currentPlayer = changeCurrentPlayer(currentPlayer);
             }
-            if (sign<0){
-                System.out.println("Secret number is less then yours.");
-            }  
-            if (sign>0){
-                System.out.println("Secret number is bigger then yours.");
-            }
-            isSecretNumberGuessed = (sign == 0);
-            isfirstPlayerTurn = !isfirstPlayerTurn;
         }
-        System.out.println("You win!"); 
     }
 
     private void generateNumber() {
@@ -36,15 +34,32 @@ public class GuessNumber {
         secretNumber = random.nextInt(100) + 1;
     }
 
-    private byte checkNumber(int number) {
-       // -1, если меньше, +1 если больше, 0 - если равно
-       return (byte) Integer.signum(secretNumber - number); 
-    }
-
-    private byte playerNextStep (Player player, Scanner console) {
+    private boolean tryGuessNumberCurrentPlayer(Player player, Scanner console) {
         System.out.println(player.getName()+", enter your number: ");
         player.setNumber(console.nextInt());
         console.nextLine();
-        return checkNumber(player.getNumber());
+        return isEqualSecretNumber(player.getNumber());
     }
+
+    private Player changeCurrentPlayer(Player currentPlayer) {
+        if (currentPlayer == player1) {
+            return player2;
+        } else {
+            return player1;
+        }
+    }
+
+    private boolean isEqualSecretNumber(int number) {
+        if (secretNumber > number) {
+            System.out.println("Secret number is bigger than " + number);
+            return false;
+        } 
+        if (secretNumber < number){
+            System.out.println("Secret number is less than " + number);      
+            return false;          
+        }
+        System.out.println("Secret number is equals to " + number);
+        return true;
+    }
+
 }
