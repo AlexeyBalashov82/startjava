@@ -14,12 +14,11 @@ public class Calculator {
 
     public boolean setMathOperation(String mathOperation) {
         String validString = "+-*/^%";
-        if (validString.contains(mathOperation) {
+        if (validString.contains(mathOperation)) {
             this.mathOperation = mathOperation;  
             return true;
-        } else {
-            return false;
-        }
+        } 
+        return false;
     }
 
     public double calculate() {

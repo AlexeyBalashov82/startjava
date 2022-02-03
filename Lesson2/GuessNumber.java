@@ -22,9 +22,8 @@ public class GuessNumber {
             if (makeMove(currentPlayer, console)) {
                 System.out.println(currentPlayer.getName() + " wins!");
                 break;
-            } else {
-                currentPlayer = (currentPlayer == player1) ? player2 : player1;
-            }
+            } 
+            currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
     }
 
@@ -46,13 +45,12 @@ public class GuessNumber {
     private boolean isEqualSecretNumber(int number) {
         if (secretNumber > number) {
             System.out.println("Secret number is bigger than " + number);
-        } 
-        if (secretNumber < number) {
+        } else if (secretNumber < number) {
             System.out.println("Secret number is less than " + number);             
-        }
-        If (secretNumber == number){
+        } else if (secretNumber == number) {
            System.out.println("Secret number is equals to " + number);
+           return true;
         }
-        return (secretNumber == number);
+        return false;
     }
 }
