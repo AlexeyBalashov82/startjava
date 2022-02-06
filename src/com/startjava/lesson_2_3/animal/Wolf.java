@@ -1,4 +1,6 @@
-public class Wolf {
+package com.startjava.lesson_2_3.animal;
+
+class Wolf {
 
     private boolean male; 
     private String name;

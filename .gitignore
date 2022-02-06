@@ -1,0 +1,6 @@
+# ignore all class files
+*.class
+# ignore output folder
+out/
+# ignore some Lesson1 files
+src/com/startjava/lesson_1/*.java

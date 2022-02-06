@@ -1,4 +1,6 @@
-public class Calculator {
+package com.startjava.lesson_2_3.calculator;
+
+class Calculator {
 
     private int firstNumber;
     private int secondNumber;
