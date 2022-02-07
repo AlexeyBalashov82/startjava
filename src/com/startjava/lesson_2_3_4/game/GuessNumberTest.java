@@ -4,16 +4,16 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
-    public static void main(String[] args) {      
+    public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         System.out.println("Enter first player name: ");
         Player player1 = new Player(console.nextLine());
         System.out.println("Enter second player name: ");
         Player player2 = new Player(console.nextLine());
-        GuessNumber game = new GuessNumber(player1,player2);
+        GuessNumber game = new GuessNumber(player1, player2);
 
         do {
-            game.play(); 
+            game.play();
         } while (isNext(console));
     }
 

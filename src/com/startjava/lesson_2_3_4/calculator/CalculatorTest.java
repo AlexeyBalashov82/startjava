@@ -15,7 +15,7 @@ public class CalculatorTest {
                 System.out.print("Enter math expression: ");
                 mathExpression = console.nextLine();
                 isValidOperation = calc.setMathExpression(mathExpression);
-                if (!isValidOperation){
+                if (!isValidOperation) {
                     System.out.println("Unknown operation!");
                 }
             } while (!isValidOperation);

@@ -15,7 +15,7 @@ class GuessNumber {
         this.player2 = player2;
     }
 
-    public void play(){
+    public void play() {
         System.out.println("Each player have 10 attempts!");
         Scanner console = new Scanner(System.in);
         Player currentPlayer = player1;
@@ -61,10 +61,10 @@ class GuessNumber {
         if (secretNumber > number) {
             System.out.println("Secret number is bigger than " + number);
         } else if (secretNumber < number) {
-            System.out.println("Secret number is less than " + number);             
+            System.out.println("Secret number is less than " + number);
         } else if (secretNumber == number) {
-           System.out.println("Secret number is equals to " + number);
-           return true;
+            System.out.println("Secret number is equals to " + number);
+            return true;
         }
         return false;
     }
