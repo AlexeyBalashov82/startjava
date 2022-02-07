@@ -23,15 +23,34 @@ public class BookShelf {
     }
 
     public void addBook(Book book, int position) {
-        System.out.println("Add book at " + position);
+        if (isEmptySlot(position)) {
+            books[position] = new Book(book);
+            System.out.println("Book added at " + position);
+        } else {
+            System.out.println("Can not add book at not empty position: " + position);
+        }
     }
 
     public void deleteBook(Book book) {
-        System.out.println("Delete books");
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (books[i] != null) {
+                if (books[i].isEqual(book)) {
+                    books[i] = null;
+                    count++;
+                }
+            }
+        }
+        System.out.println("Books deleted count: " + count);
     }
 
     public void deleteBook(int position) {
-        System.out.println("Delete book at " + position);
+        if (!isEmptySlot(position)) {
+            books[position] = null;
+            System.out.println("Book deleted at " + position);
+        } else {
+            System.out.println("Can not delete book at not empty position: " + position);
+        }
     }
 
     public void moveBook(int currPosition, int newPositiob) {

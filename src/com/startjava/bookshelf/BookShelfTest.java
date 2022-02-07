@@ -72,7 +72,26 @@ public class BookShelfTest {
     }
 
     private static void deleteBookMenu() {
-        System.out.println("Delete menu");
+        int menuItem;
+        System.out.println("You want to delete: ");
+        System.out.println("1. All the same books");
+        System.out.println("2. At exact position");
+        menuItem = console.nextInt();
+        console.nextLine();
+        switch (menuItem) {
+            case 1 -> {
+                System.out.println("Describe book you want to delete: ");
+                setBookData();
+                bookShelf.deleteBook(currentBook);
+            }
+            case 2 -> {
+                int position;
+                System.out.println("Eneter slot number: ");
+                position = console.nextInt();
+                console.nextLine();
+                bookShelf.deleteBook(position);
+            }
+        }
     }
 
     private static void moveBook() {

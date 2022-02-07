@@ -32,7 +32,7 @@ public class Book {
     }
 
     public String showCover() {
-        return "|"+String.valueOf(name.charAt(0))"|";
+        return "|" + String.valueOf(name.charAt(0)) + "|";
     }
 
     public HashMap<String, String> getBookData() {
@@ -44,6 +44,6 @@ public class Book {
     }
 
     public boolean isEqual(Book book) {
-        return ((author == book.author) && (name == book.name) && (publishingYear == book.publishingYear));
+        return ((author.equals(book.getAuthor())) && (name.equals(book.getName())) && (publishingYear == book.getPublishingYear()));
     }
 }
