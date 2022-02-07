@@ -29,14 +29,14 @@ class GuessNumber {
             }
             // логичнее разместить эту проверку выше, но тогда не выполняется условия ДЗ с выводом сообщения, что у
             // конкретного игрока закончились попытки
-            if (player1.isOutOfAttempts() && player2.isOutOfAttempts()) {
+            if (isOutOfAttempts(player1) && isOutOfAttempts(player2)) {
                 System.out.println("Both players out of attempts");
                 break;
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        System.out.println(player1.getName() + " attempts: " + Arrays.toString(player1.getNumbers()));
-        System.out.println(player2.getName() + " attempts: " + Arrays.toString(player2.getNumbers()));
+        System.out.println(player1.getName() + " attempts: " + player1.printNumbers());
+        System.out.println(player2.getName() + " attempts: " + player2.printNumbers());
     }
 
     private void init() {
@@ -47,12 +47,12 @@ class GuessNumber {
     }
 
     private boolean makeMove(Player player, Scanner console) {
-        if (player.isOutOfAttempts()) {
+        if (isOutOfAttempts(player)) {
             System.out.println(player.getName() + "is out of attempts");
             return false;
         }
         System.out.println(player.getName() + ", enter your number: ");
-        player.setNextNumber(console.nextInt());
+        player.addNumber(console.nextInt());
         console.nextLine();
         return isEqualSecretNumber(player.getCurrentNumber());
     }
@@ -68,4 +68,9 @@ class GuessNumber {
         }
         return false;
     }
+
+    private boolean isOutOfAttempts(Player player) {
+        return player.getAttemtps() >= 10;
+    }
+
 }

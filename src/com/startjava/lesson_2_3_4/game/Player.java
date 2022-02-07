@@ -12,8 +12,12 @@ class Player {
         this.name = name;
     }
 
-    public int[] getNumbers() {
-        return Arrays.copyOf(numbers, attemtps);
+    public String printNumbers() {
+        String result = " ";
+        for (int number : Arrays.copyOf(numbers, attemtps)) {
+            result += String.valueOf(number) + " ";
+        }
+        return result;
     }
 
     public String getName() {
@@ -24,21 +28,17 @@ class Player {
         return attemtps;
     }
 
-    public void setNextNumber(int number) {
-        this.attemtps++;
-        this.numbers[attemtps - 1] = number;
+    public void addNumber(int number) {
+        attemtps++;
+        numbers[attemtps - 1] = number;
     }
 
     public void init() {
+        Arrays.fill(numbers, 0, attemtps, -1);
         attemtps = 0;
-        Arrays.fill(numbers, -1);
     }
 
     public int getCurrentNumber() {
         return numbers[attemtps - 1];
-    }
-
-    public boolean isOutOfAttempts() {
-        return attemtps >= 10;
     }
 }

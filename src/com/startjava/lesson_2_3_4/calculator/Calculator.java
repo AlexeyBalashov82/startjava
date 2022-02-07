@@ -13,19 +13,22 @@ class Calculator {
     }
 
     public double calculate() {
+        int a = Integer.parseInt(mathExpression[0]);
+        int b = Integer.parseInt(mathExpression[2]);
+
         switch (mathExpression[1]) {
             case "+":
-                return Integer.parseInt(mathExpression[0]) + Integer.parseInt(mathExpression[2]);
+                return a + b;
             case "-":
-                return Integer.parseInt(mathExpression[0]) - Integer.parseInt(mathExpression[2]);
+                return a - b;
             case "*":
-                return Integer.parseInt(mathExpression[0]) * Integer.parseInt(mathExpression[2]);
+                return a * b;
             case "/":
-                return Integer.parseInt(mathExpression[0]) / (double) Integer.parseInt(mathExpression[2]);
+                return a / b;
             case "^":
-                return pow(Integer.parseInt(mathExpression[0]), Integer.parseInt(mathExpression[2]));
+                return pow(a, b);
             case "%":
-                return Integer.parseInt(mathExpression[0]) % Integer.parseInt(mathExpression[2]);
+                return a % b;
             default:
                 return 0;
         }
