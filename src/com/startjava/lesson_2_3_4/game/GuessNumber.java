@@ -35,8 +35,8 @@ class GuessNumber {
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        System.out.println(player1.getName()+ " attempts: " + Arrays.toString(player1.getNumbers()));
-        System.out.println(player2.getName()+ " attempts: " + Arrays.toString(player2.getNumbers()));
+        System.out.println(player1.getName() + " attempts: " + Arrays.toString(player1.getNumbers()));
+        System.out.println(player2.getName() + " attempts: " + Arrays.toString(player2.getNumbers()));
     }
 
     private void init() {
