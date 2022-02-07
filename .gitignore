@@ -6,4 +6,4 @@ out/
 src/com/startjava/lesson_1/*.java
 # ignore IDEA files
 *.iml
-.idea
+.idea/
