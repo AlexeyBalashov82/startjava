@@ -25,20 +25,18 @@ class GuessNumber {
         while (true) {
             if (makeMove(currentPlayer, console)) {
                 System.out.println(currentPlayer.getName() + " wins in " + currentPlayer.getAttemtps() + " attempts");
-                System.out.println(player1.getName()+ " attempts: " + Arrays.toString(player1.getNumbers()));
-                System.out.println(player2.getName()+ " attempts: " + Arrays.toString(player2.getNumbers()));
                 break;
             }
             // логичнее разместить эту проверку выше, но тогда не выполняется условия ДЗ с выводом сообщения, что у
             // конкретного игрока закончились попытки
             if (player1.isOutOfAttempts() && player2.isOutOfAttempts()) {
                 System.out.println("Both players out of attempts");
-                System.out.println(player1.getName()+ " attempts: " + Arrays.toString(player1.getNumbers()));
-                System.out.println(player2.getName()+ " attempts: " + Arrays.toString(player2.getNumbers()));
                 break;
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
+        System.out.println(player1.getName()+ " attempts: " + Arrays.toString(player1.getNumbers()));
+        System.out.println(player2.getName()+ " attempts: " + Arrays.toString(player2.getNumbers()));
     }
 
     private void init() {
