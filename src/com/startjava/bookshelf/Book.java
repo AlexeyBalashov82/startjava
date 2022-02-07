@@ -35,12 +35,12 @@ public class Book {
         return "|" + String.valueOf(name.charAt(0)) + "|";
     }
 
-    public HashMap<String, String> getBookData() {
+    public String getBookData() {
         HashMap<String, String> book = new HashMap<>();
         book.put("author", author);
         book.put("name", name);
         book.put("published", String.valueOf(publishingYear));
-        return book;
+        return book.toString();
     }
 
     public boolean isEqual(Book book) {

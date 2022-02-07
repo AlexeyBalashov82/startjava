@@ -1,5 +1,7 @@
 package com.startjava.bookshelf;
 
+import java.util.Arrays;
+
 public class BookShelf {
     private Book[] books = new Book[10];
 
@@ -53,18 +55,30 @@ public class BookShelf {
         }
     }
 
-    public void moveBook(int currPosition, int newPositiob) {
-        System.out.println("Moved");
+    public void moveBook(int currPosition, int newPosition) {
+        if (isEmptySlot(currPosition)) {
+            System.out.println("There is no book at " + currPosition);
+        } else if (!isEmptySlot(newPosition)) {
+            System.out.println("Can not move book to a busy possiotion: " + newPosition);
+        } else {
+            books[newPosition] = new Book(books[currPosition]);
+            books[currPosition] = null;
+        }
     }
 
-    public Book[] searchBooks(String author, String name, Integer publishingYear) {
-
-        return new Book[0];
-    }
-
-
-    public boolean moveBook(Book book, int newPosition) {
-        return true;
+    public void searchBooks(String name) {
+        boolean wasFound = false;
+        for (Book book : books) {
+            if (book != null) {
+                if (name.equals(book.getName())) {
+                    wasFound = true;
+                    System.out.println("Book found: " + book.getBookData());
+                }
+            }
+        }
+        if (!wasFound) {
+            System.out.println("No books found with name: " + name);
+        }
     }
 
     public int countBooks() {
@@ -87,6 +101,14 @@ public class BookShelf {
         return count;
     }
 
+    public void showBookData(int position) {
+        if (isEmptySlot(position)) {
+            System.out.println("No book at this position!");
+        } else {
+            System.out.println(books[position].getBookData());
+        }
+    }
+
     public void printBookShelf() {
         String result = "";
         for (Book book : books) {
@@ -94,6 +116,4 @@ public class BookShelf {
         }
         System.out.println(result);
     }
-
-
 }

@@ -95,23 +95,38 @@ public class BookShelfTest {
     }
 
     private static void moveBook() {
-        System.out.println("Move menu");
+        int currPosition;
+        int newPosition;
+        System.out.println("Enter current book position: ");
+        currPosition = console.nextInt();
+        console.nextLine();
+        System.out.println("Enter new position: ");
+        newPosition = console.nextInt();
+        console.nextLine();
+        bookShelf.moveBook(currPosition, newPosition);
     }
 
     private static void searchBooks() {
-        System.out.println("search menu");
+        String name;
+        System.out.println("Enter book name to search: ");
+        name = console.nextLine();
+        bookShelf.searchBooks(name);
     }
 
     private static void showBooksCount() {
-        System.out.println("BC menu");
+        System.out.println("Books on a bookshelf: " + bookShelf.countBooks());
     }
 
     private static void showSlotsCount() {
-        System.out.println("SC menu");
+        System.out.println("Empty slots on a bookshelf: " + bookShelf.countSlots());
     }
 
     private static void showBookData() {
-        System.out.println("Data menu");
+        int position;
+        System.out.println("Enter current book position: ");
+        position = console.nextInt();
+        console.nextLine();
+        bookShelf.showBookData(position);
     }
 
     private static void setBookData() {
@@ -121,14 +136,12 @@ public class BookShelfTest {
 
         System.out.println("Enter author: ");
         author = console.nextLine();
-        ;
         System.out.println("Enter book name: ");
         name = console.nextLine();
         System.out.println("Enter year of publishing: ");
         publishingYear = console.nextInt();
         console.nextLine();
 
-        currentBook = null;
         currentBook = new Book(author, name, publishingYear);
     }
 
