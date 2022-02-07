@@ -1,5 +1,6 @@
-package com.startjava.lesson_2_3.game;
+package com.startjava.lesson_2_3_4.game;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ class GuessNumber {
     }
 
     public void play(){
+        System.out.println("Each player have 10 attempts!");
         Scanner console = new Scanner(System.in);
         Player currentPlayer = player1;
 
@@ -22,9 +24,19 @@ class GuessNumber {
 
         while (true) {
             if (makeMove(currentPlayer, console)) {
-                System.out.println(currentPlayer.getName() + " wins!");
+                System.out.println(currentPlayer.getName() + " wins in " + currentPlayer.getAttemtps() + " attempts");
+                System.out.println(player1.getName()+ " attemps: " + Arrays.toString(player1.getNumbers()));
+                System.out.println(player2.getName()+ " attemps: " + Arrays.toString(player2.getNumbers()));
                 break;
-            } 
+            }
+            // логичнее разместить эту проверку выше, но тогда не выполняется условия ДЗ с выводом сообщения, что у
+            // конкретного игрока закончились попытки
+            if (player1.isOutOfAttempts() && player2.isOutOfAttempts()) {
+                System.out.println("Both users is out of attempts");
+                System.out.println(player1.getName()+ " attemps: " + Arrays.toString(player1.getNumbers()));
+                System.out.println(player2.getName()+ " attemps: " + Arrays.toString(player2.getNumbers()));
+                break;
+            }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
     }
@@ -32,16 +44,19 @@ class GuessNumber {
     private void init() {
         Random random = new Random();
         secretNumber = random.nextInt(100) + 1;
-        //сбрасываю значения, на случай если новый секрет совпадет с последним числом текущего игрока
-        player1.setNumber(-1);
-        player2.setNumber(-1);        
+        player1.init();
+        player2.init();
     }
 
     private boolean makeMove(Player player, Scanner console) {
-        System.out.println(player.getName()+", enter your number: ");
-        player.setNumber(console.nextInt());
+        if (player.isOutOfAttempts()) {
+            System.out.println(player.getName() + "is out of attemps");
+            return false;
+        }
+        System.out.println(player.getName() + ", enter your number: ");
+        player.setNextNumber(console.nextInt());
         console.nextLine();
-        return isEqualSecretNumber(player.getNumber());
+        return isEqualSecretNumber(player.getCurrentNumber());
     }
 
     private boolean isEqualSecretNumber(int number) {
