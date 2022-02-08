@@ -35,15 +35,15 @@ class GuessNumber {
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        System.out.println(player1.getName() + " attempts: " + player1.printNumbers());
-        System.out.println(player2.getName() + " attempts: " + player2.printNumbers());
+        System.out.println(printPlayerNumbers(player1));
+        System.out.println(printPlayerNumbers(player2));
     }
 
     private void init() {
         Random random = new Random();
         secretNumber = random.nextInt(100) + 1;
-        player1.init();
-        player2.init();
+        player1.clear();
+        player2.clear();
     }
 
     private boolean makeMove(Player player, Scanner console) {
@@ -73,4 +73,11 @@ class GuessNumber {
         return player.getAttemtps() >= 10;
     }
 
+    private String printPlayerNumbers(Player player) {
+        String result = " ";
+        for (int number : player.getNumbers()) {
+            result += String.valueOf(number) + " ";
+        }
+        return player.getName() + " attempts: " + result;
+    }
 }

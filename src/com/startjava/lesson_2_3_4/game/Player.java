@@ -12,12 +12,8 @@ class Player {
         this.name = name;
     }
 
-    public String printNumbers() {
-        String result = " ";
-        for (int number : Arrays.copyOf(numbers, attemtps)) {
-            result += String.valueOf(number) + " ";
-        }
-        return result;
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, attemtps);
     }
 
     public String getName() {
@@ -29,12 +25,12 @@ class Player {
     }
 
     public void addNumber(int number) {
+        numbers[attemtps] = number;
         attemtps++;
-        numbers[attemtps - 1] = number;
     }
 
-    public void init() {
-        Arrays.fill(numbers, 0, attemtps, -1);
+    public void clear() {
+        Arrays.fill(numbers, 0, attemtps, 0);
         attemtps = 0;
     }
 
