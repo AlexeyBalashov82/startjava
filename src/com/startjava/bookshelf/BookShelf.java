@@ -61,44 +61,31 @@ public class BookShelf {
         } else if (!isEmptySlot(newPosition)) {
             System.out.println("Can not move book to a busy possiotion: " + newPosition);
         } else {
-            books[newPosition] = new Book(books[currPosition]);
+            books[newPosition] = books[currPosition];
             books[currPosition] = null;
         }
     }
 
     public void searchBooks(String name) {
-        boolean wasFound = false;
-        for (Book book : books) {
-            if (book != null) {
-                if (name.equals(book.getName())) {
-                    wasFound = true;
-                    System.out.println("Book found: " + book.getBookData());
-                }
+        if (Arrays.stream(books).filter((Book book) -> {
+            if (book == null) {
+                return false;
+            } else {
+                return book.getName().equals(name);
             }
-        }
-        if (!wasFound) {
-            System.out.println("No books found with name: " + name);
+        }).peek((Book book) -> {
+            System.out.println(book.getBookData());
+        }).count() == 0) {
+            System.out.println("Books not found: " + name);
         }
     }
 
     public int countBooks() {
-        int count = 0;
-        for (Book book : books) {
-            if (book != null) {
-                count++;
-            }
-        }
-        return count;
+        return (int) Arrays.stream(books).filter(b -> b != null).count();
     }
 
     public int countSlots() {
-        int count = 0;
-        for (Book book : books) {
-            if (book == null) {
-                count++;
-            }
-        }
-        return count;
+        return (int) Arrays.stream(books).filter(b -> b == null).count();
     }
 
     public void showBookData(int position) {

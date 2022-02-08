@@ -26,7 +26,6 @@ public class BookShelfTest {
         System.out.println("5. Count books.");
         System.out.println("6. Count slots.");
         System.out.println("7. Show book details.");
-        System.out.println("8. Print bookshelf.");
         System.out.println("0. Exit");
 
         menuItem = console.nextInt();
@@ -40,7 +39,6 @@ public class BookShelfTest {
             case 5 -> showBooksCount();
             case 6 -> showSlotsCount();
             case 7 -> showBookData();
-            case 8 -> printBookShelf();
             case 0 -> {
                 return false;
             }
@@ -68,7 +66,6 @@ public class BookShelfTest {
                 bookShelf.addBook(currentBook, position);
             }
         }
-
     }
 
     private static void deleteBookMenu() {
@@ -148,6 +145,4 @@ public class BookShelfTest {
     private static void printBookShelf() {
         bookShelf.printBookShelf();
     }
-
-
 }
