@@ -35,8 +35,8 @@ class GuessNumber {
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        System.out.println(printPlayerNumbers(player1));
-        System.out.println(printPlayerNumbers(player2));
+        printPlayerNumbers(player1);
+        printPlayerNumbers(player2);
     }
 
     private void init() {
@@ -73,11 +73,7 @@ class GuessNumber {
         return player.getAttemtps() >= 10;
     }
 
-    private String printPlayerNumbers(Player player) {
-        String result = " ";
-        for (int number : player.getNumbers()) {
-            result += String.valueOf(number) + " ";
-        }
-        return player.getName() + " attempts: " + result;
+    private void printPlayerNumbers(Player player) {
+        System.out.println(player.getName() + " attempts: " + Arrays.toString(player.getNumbers()));
     }
 }
