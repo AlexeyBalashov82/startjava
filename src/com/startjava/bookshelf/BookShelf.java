@@ -3,7 +3,7 @@ package com.startjava.bookshelf;
 import java.util.Arrays;
 
 public class BookShelf {
-    private Book[] books = new Book[10];
+    private final Book[] books = new Book[10];
 
     private boolean isEmptySlot(int position) {
         return books[position] == null;
@@ -67,40 +67,68 @@ public class BookShelf {
     }
 
     public void searchBooks(String name) {
-        if (Arrays.stream(books).filter((Book book) -> {
+/*        if (Arrays.stream(books).filter((Book book) -> {
             if (book == null) {
                 return false;
             } else {
                 return book.getName().equals(name);
             }
         }).peek((Book book) -> {
-            System.out.println(book.getBookData());
+            System.out.println(book);
         }).count() == 0) {
+            System.out.println("Books not found: " + name);
+        } */
+        boolean isBookFound = false;
+        for (Book book : books) {
+            if (book != null) {
+                if (book.getName().equals(name)) {
+                    isBookFound = true;
+                    System.out.println(book);
+                }
+            }
+        }
+        if (!isBookFound) {
             System.out.println("Books not found: " + name);
         }
     }
 
     public int countBooks() {
-        return (int) Arrays.stream(books).filter(b -> b != null).count();
+        //       return (int) Arrays.stream(books).filter(b -> b != null).count();
+        int i = 0;
+        for (Book book : books) {
+            if (book != null)
+                i++;
+        }
+        return i;
     }
 
     public int countSlots() {
-        return (int) Arrays.stream(books).filter(b -> b == null).count();
+        //   return (int) Arrays.stream(books).filter(b -> b == null).count();
+        int i = 0;
+        for (Book book : books) {
+            if (book == null)
+                i++;
+        }
+        return i;
     }
 
     public void showBookData(int position) {
         if (isEmptySlot(position)) {
             System.out.println("No book at this position!");
         } else {
-            System.out.println(books[position].getBookData());
+            System.out.println(books[position].toString());
         }
     }
 
     public void printBookShelf() {
         String result = "";
         for (Book book : books) {
-            result += (book == null) ? "| |" : book.showCover();
+            result += (book == null) ? "| |" : showBookCover(book);
         }
         System.out.println(result);
+    }
+
+    private String showBookCover(Book book) {
+        return "|" + book.getName().charAt(0) + "|";
     }
 }

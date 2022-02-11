@@ -31,11 +31,8 @@ public class Book {
         return publishingYear;
     }
 
-    public String showCover() {
-        return "|" + String.valueOf(name.charAt(0)) + "|";
-    }
-
-    public String getBookData() {
+    @Override
+    public String toString() {
         HashMap<String, String> book = new HashMap<>();
         book.put("author", author);
         book.put("name", name);
@@ -44,6 +41,8 @@ public class Book {
     }
 
     public boolean isEqual(Book book) {
-        return ((author.equals(book.getAuthor())) && (name.equals(book.getName())) && (publishingYear == book.getPublishingYear()));
+        return ((author.equals(book.getAuthor())) &&
+                (name.equals(book.getName())) &&
+                (publishingYear == book.getPublishingYear()));
     }
 }
