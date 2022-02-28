@@ -5,7 +5,11 @@ import java.util.Arrays;
 public class BookShelf {
     private final Book[] books = new Book[10];
 
-    private boolean isEmptySlot(int position) {
+    private boolean isValidSlot(int position, boolean isEmptyFlag) {
+        if ((position >= 10) || (position < 0)) {
+            System.out.println("Out of range");
+            return false || isEmptyFlag;
+        }
         return books[position] == null;
     }
 
@@ -15,7 +19,7 @@ public class BookShelf {
 
         } else {
             for (int i = 0; i < 10; i++) {
-                if (isEmptySlot(i)) {
+                if (isValidSlot(i, true)) {
                     books[i] = new Book(book);
                     System.out.println("Book added at " + i);
                     break;
@@ -25,7 +29,7 @@ public class BookShelf {
     }
 
     public void addBook(Book book, int position) {
-        if (isEmptySlot(position)) {
+        if (isValidSlot(position, true)) {
             books[position] = new Book(book);
             System.out.println("Book added at " + position);
         } else {
@@ -47,19 +51,19 @@ public class BookShelf {
     }
 
     public void deleteBook(int position) {
-        if (!isEmptySlot(position)) {
+        if (!isValidSlot(position, true)) {
             books[position] = null;
             System.out.println("Book deleted at " + position);
         } else {
-            System.out.println("Can not delete book at not empty position: " + position);
+            System.out.println("Can not delete book at position: " + position);
         }
     }
 
     public void moveBook(int currPosition, int newPosition) {
-        if (isEmptySlot(currPosition)) {
+        if (isValidSlot(currPosition, false)) {
             System.out.println("There is no book at " + currPosition);
-        } else if (!isEmptySlot(newPosition)) {
-            System.out.println("Can not move book to a busy possiotion: " + newPosition);
+        } else if (!isValidSlot(newPosition, false)) {
+            System.out.println("Can not move book to possiotion: " + newPosition);
         } else {
             books[newPosition] = books[currPosition];
             books[currPosition] = null;
@@ -113,7 +117,7 @@ public class BookShelf {
     }
 
     public void showBookData(int position) {
-        if (isEmptySlot(position)) {
+        if (isValidSlot(position, true)) {
             System.out.println("No book at this position!");
         } else {
             System.out.println(books[position].toString());

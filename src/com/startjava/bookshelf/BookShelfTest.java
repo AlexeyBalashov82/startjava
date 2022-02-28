@@ -9,26 +9,25 @@ public class BookShelfTest {
 
     public static void main(String[] args) {
         while (true) {
-            if (!mainMenu()) {
+            if (!startMainMenu()) {
                 break;
             }
         }
     }
 
-    private static boolean mainMenu() {
-        int menuItem;
-
+    private static boolean startMainMenu() {
+        printBookShelf();
         System.out.println("Enter your choice: ");
-        System.out.println("1. Add book.");
-        System.out.println("2. Delete book.");
-        System.out.println("3. Move book.");
-        System.out.println("4. Search books.");
-        System.out.println("5. Count books.");
-        System.out.println("6. Count slots.");
-        System.out.println("7. Show book details.");
+        System.out.println("1. Add book");
+        System.out.println("2. Delete book");
+        System.out.println("3. Move book");
+        System.out.println("4. Search books");
+        System.out.println("5. Count books");
+        System.out.println("6. Count slots");
+        System.out.println("7. Show book details");
         System.out.println("0. Exit");
 
-        menuItem = console.nextInt();
+        int menuItem = console.nextInt();
         console.nextLine();
 
         switch (menuItem) {
@@ -42,18 +41,17 @@ public class BookShelfTest {
             case 0 -> {
                 return false;
             }
+            default -> System.out.println("Unknown operation!");
         }
-        printBookShelf();
         return true;
     }
 
     private static void addBookMenu() {
-        int menuItem;
 
         System.out.println("You want to add the book: ");
         System.out.println("1. At the tail of the shelf.");
         System.out.println("2. At exact position");
-        menuItem = console.nextInt();
+        int menuItem = console.nextInt();
         console.nextLine();
         setBookData();
         switch (menuItem) {
@@ -65,15 +63,15 @@ public class BookShelfTest {
                 console.nextLine();
                 bookShelf.addBook(currentBook, position);
             }
+            default -> System.out.println("Unknown operation!");
         }
     }
 
     private static void deleteBookMenu() {
-        int menuItem;
         System.out.println("You want to delete: ");
         System.out.println("1. All the same books");
         System.out.println("2. At exact position");
-        menuItem = console.nextInt();
+        int menuItem = console.nextInt();
         console.nextLine();
         switch (menuItem) {
             case 1 -> {
@@ -88,6 +86,7 @@ public class BookShelfTest {
                 console.nextLine();
                 bookShelf.deleteBook(position);
             }
+            default -> System.out.println("Unknown operation!");
         }
     }
 
@@ -127,16 +126,12 @@ public class BookShelfTest {
     }
 
     private static void setBookData() {
-        String author;
-        String name;
-        int publishingYear;
-
         System.out.println("Enter author: ");
-        author = console.nextLine();
+        String author = console.nextLine();
         System.out.println("Enter book name: ");
-        name = console.nextLine();
+        String name = console.nextLine();
         System.out.println("Enter year of publishing: ");
-        publishingYear = console.nextInt();
+        int publishingYear = console.nextInt();
         console.nextLine();
 
         currentBook = new Book(author, name, publishingYear);

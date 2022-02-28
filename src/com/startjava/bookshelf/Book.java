@@ -8,9 +8,7 @@ public class Book {
     private int publishingYear;
 
     public Book(Book book) {
-        this.author = book.getAuthor();
-        this.name = book.getName();
-        this.publishingYear = book.getPublishingYear();
+        this(book.getAuthor(), book.getName(), book.getPublishingYear());
     }
 
     public Book(String author, String name, int publishingYear) {
@@ -33,11 +31,7 @@ public class Book {
 
     @Override
     public String toString() {
-        HashMap<String, String> book = new HashMap<>();
-        book.put("author", author);
-        book.put("name", name);
-        book.put("published", String.valueOf(publishingYear));
-        return book.toString();
+        return "Author: " + author + ", name: " + name + ", published at " + String.valueOf(publishingYear);
     }
 
     public boolean isEqual(Book book) {
