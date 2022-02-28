@@ -1,19 +1,3 @@
-CREATE TABLE Jaegers
-(
-  id int NOT NULL,
-  modelName varchar(20) NOT NULL,
-  mark varchar(6) NULL,
-  height real NOT NULL,
-  weight real NOT NULL,
-  status boolean NOT NULL,
-  origin varchar(15),
-  launch date NOT NULL,
-  kaijuKill int NULL,
-
-  CONSTRAINT PK_JaegerID
-    PRIMARY KEY (id)
-);
-
 insert into Jaegers VALUES (1, 'Acid Geisha','MARK-3', 17.5, 1.9, true, 'Moscow', '2022-01-01', 2);
 insert into Jaegers VALUES (2, 'Bracer Phoenix','MARK-5', 70.91, 2.128, false, 'Mexico', '2025-11-01', 1);
 insert into Jaegers VALUES (3, 'Lucky Seven','MARK-1', 66.45, 2.005, false, 'Unknown', '2019-06-01', 1);
