@@ -1,6 +1,6 @@
 package com.startjava.bookshelf;
 
-import java.util.HashMap;
+import java.util.Objects;
 
 public class Book {
     private String author;
@@ -34,9 +34,11 @@ public class Book {
         return "Author: " + author + ", name: " + name + ", published at " + String.valueOf(publishingYear);
     }
 
-    public boolean isEqual(Book book) {
-        return ((author.equals(book.getAuthor())) &&
-                (name.equals(book.getName())) &&
-                (publishingYear == book.getPublishingYear()));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publishingYear == book.publishingYear && author.equals(book.author) && name.equals(book.name);
     }
 }

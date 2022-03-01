@@ -1,9 +1,8 @@
 package com.startjava.bookshelf;
 
-import java.util.Arrays;
-
 public class BookShelf {
     private final Book[] books = new Book[10];
+    private int booksInShelf = 0;
 
     private boolean isValidSlot(int position, boolean isEmptyFlag) {
         if ((position >= 10) || (position < 0)) {
@@ -16,11 +15,11 @@ public class BookShelf {
     public void addBook(Book book) {
         if (countSlots() == 0) {
             System.out.println("No more slots!");
-
         } else {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < books.length; i++) {
                 if (isValidSlot(i, true)) {
                     books[i] = new Book(book);
+                    booksInShelf++;
                     System.out.println("Book added at " + i);
                     break;
                 }
@@ -31,18 +30,20 @@ public class BookShelf {
     public void addBook(Book book, int position) {
         if (isValidSlot(position, true)) {
             books[position] = new Book(book);
+            booksInShelf++;
             System.out.println("Book added at " + position);
         } else {
-            System.out.println("Can not add book at not empty position: " + position);
+            System.out.println("Can not add book at this position: " + position);
         }
     }
 
     public void deleteBook(Book book) {
         int count = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < books.length; i++) {
             if (books[i] != null) {
-                if (books[i].isEqual(book)) {
+                if (books[i].equals(book)) {
                     books[i] = null;
+                    booksInShelf--;
                     count++;
                 }
             }
@@ -53,6 +54,7 @@ public class BookShelf {
     public void deleteBook(int position) {
         if (!isValidSlot(position, true)) {
             books[position] = null;
+            booksInShelf--;
             System.out.println("Book deleted at " + position);
         } else {
             System.out.println("Can not delete book at position: " + position);
@@ -63,7 +65,7 @@ public class BookShelf {
         if (isValidSlot(currPosition, false)) {
             System.out.println("There is no book at " + currPosition);
         } else if (!isValidSlot(newPosition, false)) {
-            System.out.println("Can not move book to possiotion: " + newPosition);
+            System.out.println("Can not move book to position: " + newPosition);
         } else {
             books[newPosition] = books[currPosition];
             books[currPosition] = null;
@@ -71,17 +73,6 @@ public class BookShelf {
     }
 
     public void searchBooks(String name) {
-/*        if (Arrays.stream(books).filter((Book book) -> {
-            if (book == null) {
-                return false;
-            } else {
-                return book.getName().equals(name);
-            }
-        }).peek((Book book) -> {
-            System.out.println(book);
-        }).count() == 0) {
-            System.out.println("Books not found: " + name);
-        } */
         boolean isBookFound = false;
         for (Book book : books) {
             if (book != null) {
@@ -97,23 +88,11 @@ public class BookShelf {
     }
 
     public int countBooks() {
-        //       return (int) Arrays.stream(books).filter(b -> b != null).count();
-        int i = 0;
-        for (Book book : books) {
-            if (book != null)
-                i++;
-        }
-        return i;
+        return booksInShelf;
     }
 
     public int countSlots() {
-        //   return (int) Arrays.stream(books).filter(b -> b == null).count();
-        int i = 0;
-        for (Book book : books) {
-            if (book == null)
-                i++;
-        }
-        return i;
+        return 10 - booksInShelf;
     }
 
     public void showBookData(int position) {
@@ -125,14 +104,13 @@ public class BookShelf {
     }
 
     public void printBookShelf() {
-        String result = "";
         for (Book book : books) {
-            result += (book == null) ? "| |" : showBookCover(book);
+            if (book == null) {
+                System.out.print("| |");
+            } else {
+                System.out.print(book.getName().charAt(0) + "|");
+            }
         }
-        System.out.println(result);
-    }
-
-    private String showBookCover(Book book) {
-        return "|" + book.getName().charAt(0) + "|";
+        System.out.println("");
     }
 }

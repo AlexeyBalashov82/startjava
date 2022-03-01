@@ -8,24 +8,22 @@ public class BookShelfTest {
     private static Book currentBook;
 
     public static void main(String[] args) {
-        while (true) {
-            if (!startMainMenu()) {
-                break;
-            }
+        while (startMainMenu()) {
+            bookShelf.printBookShelf();
         }
     }
 
     private static boolean startMainMenu() {
-        printBookShelf();
-        System.out.println("Enter your choice: ");
-        System.out.println("1. Add book");
-        System.out.println("2. Delete book");
-        System.out.println("3. Move book");
-        System.out.println("4. Search books");
-        System.out.println("5. Count books");
-        System.out.println("6. Count slots");
-        System.out.println("7. Show book details");
-        System.out.println("0. Exit");
+        System.out.println("""
+                Enter your choice: 
+                1. Add book
+                2. Delete book
+                3. Move book
+                4. Search books
+                5. Count books
+                6. Count slots
+                7. Show book details
+                0. Exit""");
 
         int menuItem = console.nextInt();
         console.nextLine();
@@ -47,7 +45,6 @@ public class BookShelfTest {
     }
 
     private static void addBookMenu() {
-
         System.out.println("You want to add the book: ");
         System.out.println("1. At the tail of the shelf.");
         System.out.println("2. At exact position");
@@ -58,7 +55,7 @@ public class BookShelfTest {
             case 1 -> bookShelf.addBook(currentBook);
             case 2 -> {
                 int position;
-                System.out.println("Eneter slot number: ");
+                System.out.println("Enter slot number: ");
                 position = console.nextInt();
                 console.nextLine();
                 bookShelf.addBook(currentBook, position);
@@ -80,9 +77,8 @@ public class BookShelfTest {
                 bookShelf.deleteBook(currentBook);
             }
             case 2 -> {
-                int position;
-                System.out.println("Eneter slot number: ");
-                position = console.nextInt();
+                System.out.println("Enter slot number: ");
+                int position = console.nextInt();
                 console.nextLine();
                 bookShelf.deleteBook(position);
             }
@@ -91,15 +87,13 @@ public class BookShelfTest {
     }
 
     private static void moveBook() {
-        int currPosition;
-        int newPosition;
         System.out.println("Enter current book position: ");
-        currPosition = console.nextInt();
+        int srcPosition = console.nextInt();
         console.nextLine();
         System.out.println("Enter new position: ");
-        newPosition = console.nextInt();
+        int newPosition = console.nextInt();
         console.nextLine();
-        bookShelf.moveBook(currPosition, newPosition);
+        bookShelf.moveBook(srcPosition, newPosition);
     }
 
     private static void searchBooks() {
@@ -135,9 +129,5 @@ public class BookShelfTest {
         console.nextLine();
 
         currentBook = new Book(author, name, publishingYear);
-    }
-
-    private static void printBookShelf() {
-        bookShelf.printBookShelf();
     }
 }
