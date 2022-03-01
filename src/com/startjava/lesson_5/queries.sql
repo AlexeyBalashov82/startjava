@@ -1,33 +1,33 @@
-select * from Jaegers;
+SELECT * FROM Jaegers;
 
-select * from Jaegers
-    where status is true;
+SELECT * FROM Jaegers
+    WHERE status IS true;
 
-select * from Jaegers
-    where mark in ('MARK-1', 'MARK-6');
+SELECT * FROM Jaegers
+    WHERE mark IN ('MARK-1', 'MARK-6');
 
-select * from Jaegers
-    order by mark desc;
+SELECT * FROM Jaegers
+    ORDER BY mark DESC;
 
-select  * from Jaegers
-    order by launch
-    limit 1;
+SELECT  * FROM Jaegers
+    ORDER BY launch
+    LIMIT 1;
 
-select * from Jaegers
-    where kaijukill in
-            (select min (kaijukill)
-                from Jaegers);
+SELECT * FROM Jaegers
+    WHERE kaijukill IN
+            (SELECT MIN (kaijukill)
+                FROM Jaegers);
 
-select * from Jaegers
-    where kaijukill in
-            (select max (kaijukill)
-                from Jaegers);
+SELECT * FROM Jaegers
+    WHERE kaijukill IN
+            (SELECT MAX (kaijukill)
+                FROM Jaegers);
 
-select avg(weight) as avgweight from Jaegers;
+SELECT AVG(weight) AS avgweight FROM Jaegers;
 
-update Jaegers
-    set kaijukill = kaijukill + 1
-    where status is true;
+UPDATE Jaegers
+    SET kaijukill = kaijukill + 1
+    WHERE status IS true;
 
-delete from Jaegers
-    where status is false;
+DELETE FROM Jaegers
+    WHERE status IS false;
